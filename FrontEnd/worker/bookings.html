@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Bookings - WorkersConnect</title>
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/auth.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="dashboard.html" class="header-brand">
+      Workers<span>Connect</span>
+    </a>
+
+    <nav class="header-nav">
+      <a href="dashboard.html" class="btn btn-ghost">Dashboard</a>
+      <a href="profile.html" class="btn btn-ghost">Profile</a>
+      <a href="bookings.html" class="btn btn-ghost active">Bookings</a>
+      <a href="reviews.html" class="btn btn-ghost">Reviews</a>
+      <button class="btn btn-outline btn-sm" id="logout-btn">Logout</button>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1>My Bookings</h1>
+      <p>Manage and track all your booking requests</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs" id="booking-tabs">
+      <button class="tab active" data-tab="all">All</button>
+      <button class="tab" data-tab="pending">Pending</button>
+      <button class="tab" data-tab="accepted">Accepted</button>
+      <button class="tab" data-tab="completed">Completed</button>
+      <button class="tab" data-tab="declined">Declined</button>
+    </div>
+
+    <!-- Bookings List -->
+    <div class="booking-list" id="bookings-list" style="margin-top: var(--space-6);">
+      <!-- Skeleton Loaders (default content) -->
+      <div class="booking-card">
+        <div class="booking-card-header">
+          <div style="display: flex; align-items: center; gap: var(--space-3);">
+            <div class="skeleton skeleton-avatar"></div>
+            <div>
+              <div class="skeleton skeleton-title" style="width: 140px;"></div>
+              <div class="skeleton skeleton-text" style="width: 100px;"></div>
+            </div>
+          </div>
+          <div class="skeleton skeleton-text" style="width: 80px;"></div>
+        </div>
+        <div class="booking-card-body">
+          <div class="skeleton skeleton-text" style="width: 100%;"></div>
+          <div class="skeleton skeleton-text" style="width: 75%;"></div>
+        </div>
+        <div class="booking-card-details">
+          <div class="skeleton skeleton-text" style="width: 130px;"></div>
+          <div class="skeleton skeleton-text" style="width: 110px;"></div>
+        </div>
+        <div class="booking-card-actions">
+          <div class="skeleton" style="width: 90px; height: 32px;"></div>
+        </div>
+      </div>
+
+      <div class="booking-card">
+        <div class="booking-card-header">
+          <div style="display: flex; align-items: center; gap: var(--space-3);">
+            <div class="skeleton skeleton-avatar"></div>
+            <div>
+              <div class="skeleton skeleton-title" style="width: 160px;"></div>
+              <div class="skeleton skeleton-text" style="width: 90px;"></div>
+            </div>
+          </div>
+          <div class="skeleton skeleton-text" style="width: 80px;"></div>
+        </div>
+        <div class="booking-card-body">
+          <div class="skeleton skeleton-text" style="width: 100%;"></div>
+          <div class="skeleton skeleton-text" style="width: 60%;"></div>
+        </div>
+        <div class="booking-card-details">
+          <div class="skeleton skeleton-text" style="width: 130px;"></div>
+          <div class="skeleton skeleton-text" style="width: 110px;"></div>
+        </div>
+        <div class="booking-card-actions">
+          <div class="skeleton" style="width: 90px; height: 32px;"></div>
+        </div>
+      </div>
+
+      <div class="booking-card">
+        <div class="booking-card-header">
+          <div style="display: flex; align-items: center; gap: var(--space-3);">
+            <div class="skeleton skeleton-avatar"></div>
+            <div>
+              <div class="skeleton skeleton-title" style="width: 130px;"></div>
+              <div class="skeleton skeleton-text" style="width: 80px;"></div>
+            </div>
+          </div>
+          <div class="skeleton skeleton-text" style="width: 80px;"></div>
+        </div>
+        <div class="booking-card-body">
+          <div class="skeleton skeleton-text" style="width: 100%;"></div>
+          <div class="skeleton skeleton-text" style="width: 85%;"></div>
+        </div>
+        <div class="booking-card-details">
+          <div class="skeleton skeleton-text" style="width: 130px;"></div>
+          <div class="skeleton skeleton-text" style="width: 110px;"></div>
+        </div>
+        <div class="booking-card-actions">
+          <div class="skeleton" style="width: 90px; height: 32px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State (hidden by default, shown by worker.js when no bookings) -->
+    <div class="empty-state" id="no-bookings" style="display: none;">
+      <div class="empty-state-icon">&#128197;</div>
+      <h3>No Bookings Found</h3>
+      <p>There are no bookings matching this filter. Try selecting a different tab or check back later.</p>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination" id="bookings-pagination">
+      <button class="pagination-btn" id="pagination-prev" disabled>&#8592; Previous</button>
+      <div id="pagination-pages">
+        <!-- Page buttons populated by worker.js -->
+      </div>
+      <button class="pagination-btn" id="pagination-next">Next &#8594;</button>
+    </div>
+  </main>
+
+  <!-- Modal Overlay (for confirm dialogs) -->
+  <div class="modal-overlay hidden" id="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modal-title">Confirm Action</h3>
+        <button class="modal-close" id="modal-close">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <p>Are you sure you want to proceed?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="modal-cancel">Cancel</button>
+        <button class="btn btn-primary" id="modal-confirm">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared JS -->
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/toast.js"></script>
+  <script src="../js/skeleton.js"></script>
+  <script src="../js/modal.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/router.js"></script>
+  <script src="../worker/worker.js"></script>
+</body>
+</html>

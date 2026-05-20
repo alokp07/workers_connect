@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Reviews - WorkersConnect</title>
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/auth.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="dashboard.html" class="header-brand">
+      Workers<span>Connect</span>
+    </a>
+
+    <nav class="header-nav">
+      <a href="dashboard.html" class="btn btn-ghost">Dashboard</a>
+      <a href="profile.html" class="btn btn-ghost">Profile</a>
+      <a href="bookings.html" class="btn btn-ghost">Bookings</a>
+      <a href="reviews.html" class="btn btn-ghost active">Reviews</a>
+      <button class="btn btn-outline btn-sm" id="logout-btn">Logout</button>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1>My Reviews</h1>
+      <p>See what clients are saying about your work</p>
+    </div>
+
+    <!-- Review Summary -->
+    <div class="card" style="margin-bottom: var(--space-8);">
+      <div class="card-body">
+        <div style="display: flex; align-items: center; gap: var(--space-8); flex-wrap: wrap;">
+          <!-- Average Rating -->
+          <div style="text-align: center;">
+            <div style="font-size: var(--font-size-4xl); font-weight: 700; color: var(--navy);" id="avg-rating">
+              <span class="skeleton skeleton-text" style="width: 60px; height: 40px; display: inline-block;"></span>
+            </div>
+            <div class="stars" id="avg-stars" style="justify-content: center; margin-bottom: var(--space-2);">
+              <span class="skeleton skeleton-text" style="width: 100px; display: inline-block;"></span>
+            </div>
+            <div style="font-size: var(--font-size-sm); color: var(--gray-500);" id="total-reviews">
+              <span class="skeleton skeleton-text" style="width: 80px; display: inline-block;"></span>
+            </div>
+          </div>
+
+          <!-- Rating Breakdown -->
+          <div style="flex: 1; min-width: 200px;" id="rating-breakdown">
+            <!-- 5 Stars -->
+            <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2);">
+              <span style="font-size: var(--font-size-sm); color: var(--gray-600); min-width: 50px;">5 stars</span>
+              <div style="flex: 1; height: 8px; background: var(--gray-200); border-radius: var(--radius-full); overflow: hidden;">
+                <div class="skeleton" style="height: 100%; width: 100%; border-radius: var(--radius-full);" id="bar-5"></div>
+              </div>
+              <span style="font-size: var(--font-size-xs); color: var(--gray-400); min-width: 24px;" id="count-5">-</span>
+            </div>
+            <!-- 4 Stars -->
+            <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2);">
+              <span style="font-size: var(--font-size-sm); color: var(--gray-600); min-width: 50px;">4 stars</span>
+              <div style="flex: 1; height: 8px; background: var(--gray-200); border-radius: var(--radius-full); overflow: hidden;">
+                <div class="skeleton" style="height: 100%; width: 100%; border-radius: var(--radius-full);" id="bar-4"></div>
+              </div>
+              <span style="font-size: var(--font-size-xs); color: var(--gray-400); min-width: 24px;" id="count-4">-</span>
+            </div>
+            <!-- 3 Stars -->
+            <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2);">
+              <span style="font-size: var(--font-size-sm); color: var(--gray-600); min-width: 50px;">3 stars</span>
+              <div style="flex: 1; height: 8px; background: var(--gray-200); border-radius: var(--radius-full); overflow: hidden;">
+                <div class="skeleton" style="height: 100%; width: 100%; border-radius: var(--radius-full);" id="bar-3"></div>
+              </div>
+              <span style="font-size: var(--font-size-xs); color: var(--gray-400); min-width: 24px;" id="count-3">-</span>
+            </div>
+            <!-- 2 Stars -->
+            <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2);">
+              <span style="font-size: var(--font-size-sm); color: var(--gray-600); min-width: 50px;">2 stars</span>
+              <div style="flex: 1; height: 8px; background: var(--gray-200); border-radius: var(--radius-full); overflow: hidden;">
+                <div class="skeleton" style="height: 100%; width: 100%; border-radius: var(--radius-full);" id="bar-2"></div>
+              </div>
+              <span style="font-size: var(--font-size-xs); color: var(--gray-400); min-width: 24px;" id="count-2">-</span>
+            </div>
+            <!-- 1 Star -->
+            <div style="display: flex; align-items: center; gap: var(--space-3);">
+              <span style="font-size: var(--font-size-sm); color: var(--gray-600); min-width: 50px;">1 star</span>
+              <div style="flex: 1; height: 8px; background: var(--gray-200); border-radius: var(--radius-full); overflow: hidden;">
+                <div class="skeleton" style="height: 100%; width: 100%; border-radius: var(--radius-full);" id="bar-1"></div>
+              </div>
+              <span style="font-size: var(--font-size-xs); color: var(--gray-400); min-width: 24px;" id="count-1">-</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reviews List -->
+    <div class="review-list" id="reviews-list">
+      <!-- Skeleton Loaders (default content) -->
+      <div class="review-card">
+        <div class="review-card-header">
+          <div class="review-card-user">
+            <div class="skeleton skeleton-avatar"></div>
+            <div>
+              <div class="skeleton skeleton-title" style="width: 120px;"></div>
+              <div class="skeleton skeleton-text" style="width: 80px;"></div>
+            </div>
+          </div>
+          <div class="skeleton skeleton-text" style="width: 90px;"></div>
+        </div>
+        <div class="review-card-comment">
+          <div class="skeleton skeleton-text" style="width: 100%;"></div>
+          <div class="skeleton skeleton-text" style="width: 90%;"></div>
+          <div class="skeleton skeleton-text" style="width: 60%;"></div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-header">
+          <div class="review-card-user">
+            <div class="skeleton skeleton-avatar"></div>
+            <div>
+              <div class="skeleton skeleton-title" style="width: 140px;"></div>
+              <div class="skeleton skeleton-text" style="width: 70px;"></div>
+            </div>
+          </div>
+          <div class="skeleton skeleton-text" style="width: 90px;"></div>
+        </div>
+        <div class="review-card-comment">
+          <div class="skeleton skeleton-text" style="width: 100%;"></div>
+          <div class="skeleton skeleton-text" style="width: 80%;"></div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-header">
+          <div class="review-card-user">
+            <div class="skeleton skeleton-avatar"></div>
+            <div>
+              <div class="skeleton skeleton-title" style="width: 110px;"></div>
+              <div class="skeleton skeleton-text" style="width: 90px;"></div>
+            </div>
+          </div>
+          <div class="skeleton skeleton-text" style="width: 90px;"></div>
+        </div>
+        <div class="review-card-comment">
+          <div class="skeleton skeleton-text" style="width: 100%;"></div>
+          <div class="skeleton skeleton-text" style="width: 95%;"></div>
+          <div class="skeleton skeleton-text" style="width: 50%;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State (hidden by default, shown by worker.js when no reviews) -->
+    <div class="empty-state" id="no-reviews" style="display: none;">
+      <div class="empty-state-icon">&#11088;</div>
+      <h3>No Reviews Yet</h3>
+      <p>You haven't received any reviews yet. Complete jobs to start building your reputation!</p>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination" id="reviews-pagination">
+      <button class="pagination-btn" id="pagination-prev" disabled>&#8592; Previous</button>
+      <div id="pagination-pages">
+        <!-- Page buttons populated by worker.js -->
+      </div>
+      <button class="pagination-btn" id="pagination-next">Next &#8594;</button>
+    </div>
+  </main>
+
+  <!-- Reply Modal -->
+  <div class="modal-overlay hidden" id="reply-modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Reply to Review</h3>
+        <button class="modal-close" id="reply-modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="reply-form">
+          <input type="hidden" id="reply-review-id" name="review_id">
+          <div class="form-group">
+            <label class="form-label" for="reply-text">Your Reply</label>
+            <textarea
+              id="reply-text"
+              name="reply_text"
+              class="form-textarea"
+              placeholder="Write a thoughtful response to this review..."
+              rows="4"
+              required
+            ></textarea>
+            <span class="form-hint">You can only reply once per review. Make it count!</span>
+            <span class="form-error" id="reply-text-error"></span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="reply-cancel">Cancel</button>
+        <button class="btn btn-primary" id="reply-submit">Submit Reply</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared JS -->
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/toast.js"></script>
+  <script src="../js/skeleton.js"></script>
+  <script src="../js/modal.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/router.js"></script>
+  <script src="../worker/worker.js"></script>
+</body>
+</html>

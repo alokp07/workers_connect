@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Worker Registration - WorkersConnect</title>
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/auth.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <div class="auth-page">
+    <div class="auth-overlay"></div>
+
+    <div class="auth-card animate-fadeInUp" style="max-width: 520px;">
+      <!-- Logo -->
+      <div class="auth-logo">
+        <h1>Workers<span>Connect</span></h1>
+        <p>Create your worker account</p>
+      </div>
+
+      <!-- Role Badge -->
+      <div style="text-align: center;">
+        <span class="auth-role-badge worker">Worker</span>
+      </div>
+
+      <!-- Registration Form -->
+      <form class="auth-form" id="worker-register-form" enctype="multipart/form-data">
+        <!-- Full Name -->
+        <div class="form-group">
+          <label class="form-label" for="full_name">Full Name</label>
+          <input
+            type="text"
+            id="full_name"
+            name="full_name"
+            class="form-input"
+            placeholder="Enter your full name"
+            required
+          >
+          <span class="form-error" id="full_name-error"></span>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-input"
+            placeholder="Enter your email"
+            required
+          >
+          <span class="form-error" id="email-error"></span>
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group">
+          <label class="form-label" for="phone">Phone Number</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            class="form-input"
+            placeholder="Enter your phone number"
+            required
+          >
+          <span class="form-error" id="phone-error"></span>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-input"
+            placeholder="Create a strong password"
+            required
+          >
+          <span class="form-error" id="password-error"></span>
+        </div>
+
+        <!-- Bio -->
+        <div class="form-group">
+          <label class="form-label" for="bio">Bio</label>
+          <textarea
+            id="bio"
+            name="bio"
+            class="form-textarea"
+            placeholder="Tell clients about yourself, your experience, and what you offer..."
+            rows="3"
+          ></textarea>
+          <span class="form-hint">Brief description of your professional background</span>
+          <span class="form-error" id="bio-error"></span>
+        </div>
+
+        <!-- Category -->
+        <div class="form-group">
+          <label class="form-label" for="category_id">Service Category</label>
+          <select id="category_id" name="category_id" class="form-select" required>
+            <option value="">Select a category</option>
+            <!-- Options populated by worker.js -->
+          </select>
+          <span class="form-error" id="category_id-error"></span>
+        </div>
+
+        <!-- Skills -->
+        <div class="form-group">
+          <label class="form-label" for="skills">Skills</label>
+          <input
+            type="text"
+            id="skills"
+            name="skills"
+            class="form-input"
+            placeholder="e.g. Plumbing, Pipe Fitting, Drain Cleaning"
+          >
+          <span class="form-hint">Enter your skills separated by commas</span>
+          <span class="form-error" id="skills-error"></span>
+        </div>
+
+        <!-- Years of Experience -->
+        <div class="form-group">
+          <label class="form-label" for="years_experience">Years of Experience</label>
+          <input
+            type="number"
+            id="years_experience"
+            name="years_experience"
+            class="form-input"
+            placeholder="e.g. 5"
+            min="0"
+            max="50"
+          >
+          <span class="form-error" id="years_experience-error"></span>
+        </div>
+
+        <!-- Location -->
+        <div class="form-group">
+          <label class="form-label" for="location">Location</label>
+          <input
+            type="text"
+            id="location"
+            name="location"
+            class="form-input"
+            placeholder="e.g. Mumbai, Maharashtra"
+            required
+          >
+          <span class="form-error" id="location-error"></span>
+        </div>
+
+        <!-- Profile Photo -->
+        <div class="form-group">
+          <label class="form-label" for="avatar">Profile Photo</label>
+          <input
+            type="file"
+            id="avatar"
+            name="avatar"
+            class="form-input"
+            accept="image/*"
+          >
+          <span class="form-hint">Upload a professional profile photo (JPG, PNG)</span>
+          <span class="form-error" id="avatar-error"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="register-btn">
+          Create Account
+        </button>
+      </form>
+
+      <!-- Footer -->
+      <div class="auth-footer">
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+        <p style="margin-top: var(--space-2);"><a href="/">Back to Home</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared JS -->
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/toast.js"></script>
+  <script src="../js/skeleton.js"></script>
+  <script src="../js/modal.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/router.js"></script>
+  <script src="../worker/worker.js"></script>
+</body>
+</html>

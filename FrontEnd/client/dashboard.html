@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Workers - WorkersConnect</title>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/auth.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="dashboard.html" class="header-brand">
+      Workers<span>Connect</span>
+    </a>
+    <nav class="header-nav">
+      <a href="dashboard.html" class="btn btn-ghost">Browse Workers</a>
+      <a href="bookings.html" class="btn btn-ghost">My Bookings</a>
+      <button class="btn btn-outline btn-sm" id="logout-btn">Logout</button>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1>Browse Workers</h1>
+      <p>Find skilled professionals for your projects</p>
+    </div>
+
+    <!-- Filters Bar -->
+    <div class="filters-bar" id="filters-bar">
+      <div class="search-bar">
+        <span class="search-icon">&#128269;</span>
+        <input type="text" id="search-input" placeholder="Search workers by name or skill...">
+      </div>
+
+      <div class="form-group" style="margin-bottom: 0; min-width: 160px;">
+        <select class="form-select" id="category-filter">
+          <option value="">All Categories</option>
+          <!-- Populated by JS -->
+        </select>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 0; min-width: 150px;">
+        <input type="text" class="form-input" id="location-filter" placeholder="Location...">
+      </div>
+
+      <div class="form-group" style="margin-bottom: 0; min-width: 140px;">
+        <select class="form-select" id="rating-filter">
+          <option value="">Any Rating</option>
+          <option value="4">4+ Stars</option>
+          <option value="3">3+ Stars</option>
+          <option value="2">2+ Stars</option>
+          <option value="1">1+ Stars</option>
+        </select>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 0; min-width: 150px;">
+        <select class="form-select" id="sort-filter">
+          <option value="">Sort By</option>
+          <option value="rating_desc">Rating: High to Low</option>
+          <option value="rating_asc">Rating: Low to High</option>
+          <option value="experience_desc">Experience: Most</option>
+          <option value="experience_asc">Experience: Least</option>
+          <option value="name_asc">Name: A-Z</option>
+          <option value="name_desc">Name: Z-A</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Workers Grid -->
+    <div class="worker-grid" id="workers-grid">
+      <!-- Skeleton loaders (default content) -->
+      <div class="worker-card">
+        <div class="worker-card-header">
+          <div class="skeleton skeleton-avatar" style="width: 48px; height: 48px;"></div>
+          <div style="flex: 1;">
+            <div class="skeleton skeleton-title"></div>
+            <div class="skeleton skeleton-text" style="width: 50%;"></div>
+          </div>
+        </div>
+        <div class="worker-card-body">
+          <div class="skeleton skeleton-text" style="width: 90%;"></div>
+          <div class="skeleton skeleton-text" style="width: 70%;"></div>
+          <div class="skeleton skeleton-text" style="width: 60%; margin-top: 12px;"></div>
+        </div>
+        <div class="worker-card-footer">
+          <div class="skeleton skeleton-text" style="width: 80px;"></div>
+          <div class="skeleton" style="width: 90px; height: 32px;"></div>
+        </div>
+      </div>
+      <div class="worker-card">
+        <div class="worker-card-header">
+          <div class="skeleton skeleton-avatar" style="width: 48px; height: 48px;"></div>
+          <div style="flex: 1;">
+            <div class="skeleton skeleton-title"></div>
+            <div class="skeleton skeleton-text" style="width: 50%;"></div>
+          </div>
+        </div>
+        <div class="worker-card-body">
+          <div class="skeleton skeleton-text" style="width: 90%;"></div>
+          <div class="skeleton skeleton-text" style="width: 70%;"></div>
+          <div class="skeleton skeleton-text" style="width: 60%; margin-top: 12px;"></div>
+        </div>
+        <div class="worker-card-footer">
+          <div class="skeleton skeleton-text" style="width: 80px;"></div>
+          <div class="skeleton" style="width: 90px; height: 32px;"></div>
+        </div>
+      </div>
+      <div class="worker-card">
+        <div class="worker-card-header">
+          <div class="skeleton skeleton-avatar" style="width: 48px; height: 48px;"></div>
+          <div style="flex: 1;">
+            <div class="skeleton skeleton-title"></div>
+            <div class="skeleton skeleton-text" style="width: 50%;"></div>
+          </div>
+        </div>
+        <div class="worker-card-body">
+          <div class="skeleton skeleton-text" style="width: 90%;"></div>
+          <div class="skeleton skeleton-text" style="width: 70%;"></div>
+          <div class="skeleton skeleton-text" style="width: 60%; margin-top: 12px;"></div>
+        </div>
+        <div class="worker-card-footer">
+          <div class="skeleton skeleton-text" style="width: 80px;"></div>
+          <div class="skeleton" style="width: 90px; height: 32px;"></div>
+        </div>
+      </div>
+      <div class="worker-card">
+        <div class="worker-card-header">
+          <div class="skeleton skeleton-avatar" style="width: 48px; height: 48px;"></div>
+          <div style="flex: 1;">
+            <div class="skeleton skeleton-title"></div>
+            <div class="skeleton skeleton-text" style="width: 50%;"></div>
+          </div>
+        </div>
+        <div class="worker-card-body">
+          <div class="skeleton skeleton-text" style="width: 90%;"></div>
+          <div class="skeleton skeleton-text" style="width: 70%;"></div>
+          <div class="skeleton skeleton-text" style="width: 60%; margin-top: 12px;"></div>
+        </div>
+        <div class="worker-card-footer">
+          <div class="skeleton skeleton-text" style="width: 80px;"></div>
+          <div class="skeleton" style="width: 90px; height: 32px;"></div>
+        </div>
+      </div>
+      <div class="worker-card">
+        <div class="worker-card-header">
+          <div class="skeleton skeleton-avatar" style="width: 48px; height: 48px;"></div>
+          <div style="flex: 1;">
+            <div class="skeleton skeleton-title"></div>
+            <div class="skeleton skeleton-text" style="width: 50%;"></div>
+          </div>
+        </div>
+        <div class="worker-card-body">
+          <div class="skeleton skeleton-text" style="width: 90%;"></div>
+          <div class="skeleton skeleton-text" style="width: 70%;"></div>
+          <div class="skeleton skeleton-text" style="width: 60%; margin-top: 12px;"></div>
+        </div>
+        <div class="worker-card-footer">
+          <div class="skeleton skeleton-text" style="width: 80px;"></div>
+          <div class="skeleton" style="width: 90px; height: 32px;"></div>
+        </div>
+      </div>
+      <div class="worker-card">
+        <div class="worker-card-header">
+          <div class="skeleton skeleton-avatar" style="width: 48px; height: 48px;"></div>
+          <div style="flex: 1;">
+            <div class="skeleton skeleton-title"></div>
+            <div class="skeleton skeleton-text" style="width: 50%;"></div>
+          </div>
+        </div>
+        <div class="worker-card-body">
+          <div class="skeleton skeleton-text" style="width: 90%;"></div>
+          <div class="skeleton skeleton-text" style="width: 70%;"></div>
+          <div class="skeleton skeleton-text" style="width: 60%; margin-top: 12px;"></div>
+        </div>
+        <div class="worker-card-footer">
+          <div class="skeleton skeleton-text" style="width: 80px;"></div>
+          <div class="skeleton" style="width: 90px; height: 32px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State (hidden by default) -->
+    <div class="empty-state" id="empty-state" style="display: none;">
+      <div class="empty-state-icon">&#128269;</div>
+      <h3>No Workers Found</h3>
+      <p>Try adjusting your search filters or check back later for new workers.</p>
+    </div>
+
+    <!-- Pagination -->
+    <div id="pagination-container"></div>
+  </main>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/toast.js"></script>
+  <script src="../js/skeleton.js"></script>
+  <script src="../js/modal.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/router.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>

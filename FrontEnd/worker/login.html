@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Worker Login - WorkersConnect</title>
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/auth.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <div class="auth-page">
+    <div class="auth-overlay"></div>
+
+    <div class="auth-card animate-fadeInUp">
+      <!-- Logo -->
+      <div class="auth-logo">
+        <h1>Workers<span>Connect</span></h1>
+        <p>Connect with clients and grow your business</p>
+      </div>
+
+      <!-- Role Badge -->
+      <div style="text-align: center;">
+        <span class="auth-role-badge worker">Worker</span>
+      </div>
+
+      <!-- Login Form -->
+      <form class="auth-form" id="worker-login-form">
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-input"
+            placeholder="Enter your email"
+            required
+          >
+          <span class="form-error" id="email-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-input"
+            placeholder="Enter your password"
+            required
+          >
+          <span class="form-error" id="password-error"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="login-btn">
+          Login
+        </button>
+      </form>
+
+      <!-- Footer -->
+      <div class="auth-footer">
+        <p>Don't have an account? <a href="register.html">Register as Worker</a></p>
+        <p style="margin-top: var(--space-2);"><a href="/">Back to Home</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared JS -->
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/toast.js"></script>
+  <script src="../js/skeleton.js"></script>
+  <script src="../js/modal.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/router.js"></script>
+  <script src="../worker/worker.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workers Connect</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+height:100vh;
+background:url("bglogin.png") no-repeat center center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.overlay{
+width:100%;
+height:100%;
+background:rgba(255,255,255,0.85);
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.container{
+text-align:center;
+}
+
+.container h1{
+font-size:48px;
+color:#1f2937;
+margin-bottom:10px;
+}
+
+.subtitle{
+color:#555;
+margin-bottom:50px;
+font-size:18px;
+}
+
+.cards{
+display:flex;
+gap:40px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.card{
+width:300px;
+padding:40px 30px;
+border-radius:15px;
+color:white;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+transition:0.3s;
+cursor:pointer;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.icon{
+font-size:40px;
+margin-bottom:20px;
+}
+
+.card h2{
+font-size:28px;
+margin-bottom:10px;
+}
+
+.card p{
+font-size:15px;
+}
+
+.client{
+background:linear-gradient(135deg,#3b82f6,#2563eb);
+}
+
+.worker{
+background:linear-gradient(135deg,#22c55e,#16a34a);
+}
+
+.admin{
+background:linear-gradient(135deg,#a855f7,#9333ea);
+}
+
+.footer{
+margin-top:40px;
+color:#444;
+}
+
+.card-link{
+text-decoration:none;
+color:inherit;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="overlay">
+
+<div class="container">
+
+<h1>Workers Connect</h1>
+<p class="subtitle">Connecting local workers with clients seamlessly</p>
+
+<div class="cards">
+
+<!-- CLIENT -->
+
+<a href="client/login.html" class="card-link">
+<div class="card client">
+<div class="icon">👥</div>
+<h2>Client</h2>
+<p>Find skilled workers for your projects</p>
+</div>
+</a>
+
+<!-- WORKER -->
+
+<a href="worker/login.html" class="card-link">
+<div class="card worker">
+<div class="icon">🔧</div>
+<h2>Worker</h2>
+<p>Connect with clients and grow your business</p>
+</div>
+</a>
+
+<!-- ADMIN -->
+
+<a href="admin/login.html" class="card-link">
+<div class="card admin">
+<div class="icon">🛡️</div>
+<h2>Admin</h2>
+<p>Manage platform and approve workers</p>
+</div>
+</a>
+
+</div>
+
+<p class="footer">Select your role to continue</p>
+
+</div>
+
+</div>
+
+</body>
+</html>

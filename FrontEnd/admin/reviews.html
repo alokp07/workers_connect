@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews - WorkersConnect Admin</title>
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/auth.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <div class="layout-sidebar">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div style="padding: var(--space-4) var(--space-6) var(--space-6);">
+        <h2 style="color: var(--white-pure); font-size: var(--font-size-lg);">Workers<span style="color: var(--indigo-light);">Connect</span></h2>
+        <p style="color: var(--gray-500); font-size: var(--font-size-xs); margin-bottom: 0;">Admin Panel</p>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="sidebar-link">
+          <span class="icon">📊</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="approvals.html" class="sidebar-link">
+          <span class="icon">✅</span>
+          <span>Approvals</span>
+        </a>
+        <a href="users.html" class="sidebar-link">
+          <span class="icon">👥</span>
+          <span>Users</span>
+        </a>
+        <a href="categories.html" class="sidebar-link">
+          <span class="icon">📁</span>
+          <span>Categories</span>
+        </a>
+        <a href="bookings.html" class="sidebar-link">
+          <span class="icon">📅</span>
+          <span>Bookings</span>
+        </a>
+        <a href="reviews.html" class="sidebar-link active">
+          <span class="icon">⭐</span>
+          <span>Reviews</span>
+        </a>
+        <a href="activity-log.html" class="sidebar-link">
+          <span class="icon">📋</span>
+          <span>Activity Log</span>
+        </a>
+      </nav>
+
+      <div style="margin-top: auto; padding-top: var(--space-6);">
+        <a href="#" class="sidebar-link" id="logout-link">
+          <span class="icon">🚪</span>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1>Reviews Moderation</h1>
+        <p>Monitor and moderate user reviews</p>
+      </div>
+
+      <!-- Table -->
+      <div class="table-container" id="reviews-table-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Client</th>
+              <th>Worker</th>
+              <th>Rating</th>
+              <th>Comment</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="reviews-table-body">
+            <!-- Skeleton rows -->
+            <tr>
+              <td><div class="skeleton skeleton-text" style="width: 110px;"></div></td>
+              <td><div class="skeleton skeleton-text" style="width: 110px;"></div></td>
+              <td><div class="skeleton skeleton-text" style="width: 80px;"></div></td>
+              <td><div class="skeleton skeleton-text" style="width: 200px;"></div></td>
+              <td><div class="skeleton skeleton-text" style="width: 90px;"></div></td>
+              <td><div class="skeleton skeleton-text" style="width: 70px;"></div></td>
+            </tr>
+            <tr>
+              <td><div class="skeleton skeleton-text" style="width: 110px;"></div></td>
+              <td><div class="skeleton skeleton-text" style="width: 110px;"></div></td>
+              <td><div class="skeleton skeleton-text" style="width: 80px;"></div></td>
+              <td><div class="skeleton skeleton-text" style="width: 200px;"></div></td>
+              <td><div class="skeleton skeleton-text" style="width: 90px;"></div></td>
+              <td><div class="skeleton skeleton-text" style="width: 70px;"></div></td>
+            </tr>
+            <tr>
+              <td><div class="skeleton skeleton-text" style="width: 110px;"></div></td>
+              <td><div class="skeleton skeleton-text" style="width: 110px;"></div></td>
+              <td><div class="skeleton skeleton-text" style="width: 80px;"></div></td>
+              <td><div class="skeleton skeleton-text" style="width: 200px;"></div></td>
+              <td><div class="skeleton skeleton-text" style="width: 90px;"></div></td>
+              <td><div class="skeleton skeleton-text" style="width: 70px;"></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination" id="reviews-pagination">
+        <button class="pagination-btn" id="reviews-prev-btn" disabled>&laquo; Prev</button>
+        <span id="reviews-page-info" style="font-size: var(--font-size-sm); color: var(--gray-500);">Page 1</span>
+        <button class="pagination-btn" id="reviews-next-btn">Next &raquo;</button>
+      </div>
+    </main>
+  </div>
+
+  <!-- Shared JS -->
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/toast.js"></script>
+  <script src="../js/skeleton.js"></script>
+  <script src="../js/modal.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/router.js"></script>
+  <script src="../admin/admin.js"></script>
+</body>
+</html>

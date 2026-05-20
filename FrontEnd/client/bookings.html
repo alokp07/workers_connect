@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Bookings - WorkersConnect</title>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/auth.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="dashboard.html" class="header-brand">
+      Workers<span>Connect</span>
+    </a>
+    <nav class="header-nav">
+      <a href="dashboard.html" class="btn btn-ghost">Browse Workers</a>
+      <a href="bookings.html" class="btn btn-ghost">My Bookings</a>
+      <button class="btn btn-outline btn-sm" id="logout-btn">Logout</button>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1>My Bookings</h1>
+      <p>Track and manage your service bookings</p>
+    </div>
+
+    <!-- Status Tabs -->
+    <div class="tabs" id="booking-tabs">
+      <button class="tab active" data-status="">All</button>
+      <button class="tab" data-status="pending">Pending</button>
+      <button class="tab" data-status="accepted">Accepted</button>
+      <button class="tab" data-status="completed">Completed</button>
+      <button class="tab" data-status="cancelled">Cancelled</button>
+    </div>
+
+    <!-- Booking List -->
+    <div class="booking-list" id="bookings-list" style="margin-top: var(--space-6);">
+      <!-- Skeleton loaders -->
+      <div class="booking-card">
+        <div class="booking-card-header">
+          <div style="display: flex; align-items: center; gap: var(--space-3);">
+            <div class="skeleton skeleton-avatar"></div>
+            <div>
+              <div class="skeleton skeleton-text" style="width: 140px;"></div>
+              <div class="skeleton skeleton-text" style="width: 100px;"></div>
+            </div>
+          </div>
+          <div class="skeleton" style="width: 70px; height: 24px; border-radius: 12px;"></div>
+        </div>
+        <div class="booking-card-body">
+          <div class="skeleton skeleton-text" style="width: 100%;"></div>
+          <div class="skeleton skeleton-text" style="width: 80%;"></div>
+        </div>
+        <div class="booking-card-details">
+          <div class="skeleton skeleton-text" style="width: 120px;"></div>
+          <div class="skeleton skeleton-text" style="width: 100px;"></div>
+        </div>
+      </div>
+      <div class="booking-card">
+        <div class="booking-card-header">
+          <div style="display: flex; align-items: center; gap: var(--space-3);">
+            <div class="skeleton skeleton-avatar"></div>
+            <div>
+              <div class="skeleton skeleton-text" style="width: 140px;"></div>
+              <div class="skeleton skeleton-text" style="width: 100px;"></div>
+            </div>
+          </div>
+          <div class="skeleton" style="width: 70px; height: 24px; border-radius: 12px;"></div>
+        </div>
+        <div class="booking-card-body">
+          <div class="skeleton skeleton-text" style="width: 100%;"></div>
+          <div class="skeleton skeleton-text" style="width: 80%;"></div>
+        </div>
+        <div class="booking-card-details">
+          <div class="skeleton skeleton-text" style="width: 120px;"></div>
+          <div class="skeleton skeleton-text" style="width: 100px;"></div>
+        </div>
+      </div>
+      <div class="booking-card">
+        <div class="booking-card-header">
+          <div style="display: flex; align-items: center; gap: var(--space-3);">
+            <div class="skeleton skeleton-avatar"></div>
+            <div>
+              <div class="skeleton skeleton-text" style="width: 140px;"></div>
+              <div class="skeleton skeleton-text" style="width: 100px;"></div>
+            </div>
+          </div>
+          <div class="skeleton" style="width: 70px; height: 24px; border-radius: 12px;"></div>
+        </div>
+        <div class="booking-card-body">
+          <div class="skeleton skeleton-text" style="width: 100%;"></div>
+          <div class="skeleton skeleton-text" style="width: 80%;"></div>
+        </div>
+        <div class="booking-card-details">
+          <div class="skeleton skeleton-text" style="width: 120px;"></div>
+          <div class="skeleton skeleton-text" style="width: 100px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" id="bookings-empty" style="display: none;">
+      <div class="empty-state-icon">&#128203;</div>
+      <h3>No Bookings Found</h3>
+      <p>You haven't made any bookings yet. Browse workers to get started!</p>
+      <a href="dashboard.html" class="btn btn-primary" style="margin-top: var(--space-4);">Browse Workers</a>
+    </div>
+
+    <!-- Pagination -->
+    <div id="pagination-container"></div>
+  </main>
+
+  <!-- Cancel Booking Modal -->
+  <div class="modal-overlay hidden" id="cancel-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Cancel Booking</h3>
+        <button class="modal-close" id="cancel-modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to cancel this booking? This action cannot be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" id="cancel-modal-dismiss">Keep Booking</button>
+        <button class="btn btn-danger" id="cancel-modal-confirm">Cancel Booking</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/toast.js"></script>
+  <script src="../js/skeleton.js"></script>
+  <script src="../js/modal.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/router.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>

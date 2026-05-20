@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Worker - WorkersConnect</title>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/auth.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="dashboard.html" class="header-brand">
+      Workers<span>Connect</span>
+    </a>
+    <nav class="header-nav">
+      <a href="dashboard.html" class="btn btn-ghost">Browse Workers</a>
+      <a href="bookings.html" class="btn btn-ghost">My Bookings</a>
+      <button class="btn btn-outline btn-sm" id="logout-btn">Logout</button>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content" style="max-width: 700px;">
+    <!-- Back Link -->
+    <div style="margin-bottom: var(--space-6);">
+      <a href="#" class="btn btn-ghost" id="back-to-profile">&#8592; Back to Worker Profile</a>
+    </div>
+
+    <div class="card animate-fadeInUp">
+      <div class="card-header">
+        <h3>&#128197; Book a Worker</h3>
+      </div>
+
+      <div class="card-body">
+        <!-- Worker Info Preview -->
+        <div id="worker-preview" style="display: flex; align-items: center; gap: var(--space-4); padding: var(--space-4); background: var(--gray-50); border-radius: var(--radius-md); margin-bottom: var(--space-6);">
+          <!-- Skeleton loader -->
+          <div class="skeleton skeleton-avatar" style="width: 48px; height: 48px;"></div>
+          <div style="flex: 1;">
+            <div class="skeleton skeleton-title" style="width: 160px;"></div>
+            <div class="skeleton skeleton-text" style="width: 120px;"></div>
+          </div>
+        </div>
+
+        <!-- Booking Form -->
+        <form id="booking-form" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="description">Job Description</label>
+            <textarea id="description" name="description" class="form-textarea" placeholder="Describe the work you need done..." rows="4" required></textarea>
+            <span class="form-error" id="description-error"></span>
+            <span class="form-hint">Be specific about the work required, materials, and any special instructions.</span>
+          </div>
+
+          <div class="grid grid-2" style="margin-bottom: 0;">
+            <div class="form-group">
+              <label class="form-label" for="preferred_date">Preferred Date</label>
+              <input type="date" id="preferred_date" name="preferred_date" class="form-input" required>
+              <span class="form-error" id="preferred_date-error"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="preferred_time">Preferred Time</label>
+              <input type="time" id="preferred_time" name="preferred_time" class="form-input" required>
+              <span class="form-error" id="preferred_time-error"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="location">Work Location</label>
+            <input type="text" id="location" name="location" class="form-input" placeholder="Enter the job location / address" required>
+            <span class="form-error" id="location-error"></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg" id="submit-booking-btn">
+            Submit Booking Request
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/toast.js"></script>
+  <script src="../js/skeleton.js"></script>
+  <script src="../js/modal.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/router.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>

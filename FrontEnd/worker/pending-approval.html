@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pending Approval - WorkersConnect</title>
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/auth.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <div class="pending-page">
+    <div class="pending-card">
+      <!-- Bouncing Clock Icon -->
+      <div class="pending-icon animate-bounce">&#9203;</div>
+
+      <!-- Heading -->
+      <h2>Your Account is Under Review</h2>
+
+      <!-- Description -->
+      <p>
+        Thank you for registering with WorkersConnect! Our team is reviewing your
+        application. This usually takes 24-48 hours. You will be notified once your
+        account has been approved.
+      </p>
+
+      <!-- Status Badge -->
+      <div style="margin-bottom: var(--space-8);">
+        <span class="pending-status">
+          <span class="spinner"></span>
+          Pending Approval
+        </span>
+      </div>
+
+      <!-- Status Info -->
+      <p id="last-checked" style="font-size: var(--font-size-xs); color: var(--gray-400); margin-bottom: var(--space-6);">
+        Auto-checking status every 30 seconds...
+      </p>
+
+      <!-- Actions -->
+      <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+        <button class="btn btn-primary btn-block" id="check-status-btn">
+          Check Status Now
+        </button>
+        <button class="btn btn-outline btn-block" id="logout-btn">
+          Logout
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared JS -->
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/toast.js"></script>
+  <script src="../js/skeleton.js"></script>
+  <script src="../js/modal.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/router.js"></script>
+  <script src="../worker/worker.js"></script>
+</body>
+</html>

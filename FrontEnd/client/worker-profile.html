@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Worker Profile - WorkersConnect</title>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/auth.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="dashboard.html" class="header-brand">
+      Workers<span>Connect</span>
+    </a>
+    <nav class="header-nav">
+      <a href="dashboard.html" class="btn btn-ghost">Browse Workers</a>
+      <a href="bookings.html" class="btn btn-ghost">My Bookings</a>
+      <button class="btn btn-outline btn-sm" id="logout-btn">Logout</button>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Back Link -->
+    <div style="margin-bottom: var(--space-6);">
+      <a href="dashboard.html" class="btn btn-ghost">&#8592; Back to Browse</a>
+    </div>
+
+    <!-- Profile Header -->
+    <div class="profile-header" id="profile-header">
+      <div class="profile-avatar-section">
+        <div id="profile-avatar">
+          <div class="skeleton" style="width: 96px; height: 96px; border-radius: 50%;"></div>
+        </div>
+      </div>
+      <div class="profile-info" style="flex: 1;">
+        <h2 id="profile-name" class="skeleton skeleton-title" style="width: 200px; height: 28px;"></h2>
+        <p id="profile-category" class="skeleton skeleton-text" style="width: 150px; margin-top: 8px;"></p>
+        <p id="profile-location" class="skeleton skeleton-text" style="width: 120px; margin-top: 8px;"></p>
+        <p id="profile-experience" class="skeleton skeleton-text" style="width: 180px; margin-top: 8px;"></p>
+        <span id="profile-availability" class="badge" style="margin-top: 8px;"></span>
+        <div class="profile-stats" style="margin-top: var(--space-4);">
+          <div class="profile-stat">
+            <div id="stat-rating-value" class="profile-stat-value skeleton" style="width: 40px; height: 28px; margin: 0 auto 4px;"></div>
+            <div id="stat-rating-stars"></div>
+            <div class="profile-stat-label">Rating</div>
+          </div>
+          <div class="profile-stat">
+            <div id="stat-reviews-value" class="profile-stat-value skeleton" style="width: 40px; height: 28px; margin: 0 auto 4px;"></div>
+            <div class="profile-stat-label">Reviews</div>
+          </div>
+          <div class="profile-stat">
+            <div id="stat-experience-value" class="profile-stat-value skeleton" style="width: 40px; height: 28px; margin: 0 auto 4px;"></div>
+            <div class="profile-stat-label">Yrs Exp.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bio Section -->
+    <div class="card" style="margin-bottom: var(--space-6);" id="bio-section">
+      <div class="card-header">About</div>
+      <div class="card-body" id="bio-content">
+        <div class="skeleton skeleton-text" style="width: 100%;"></div>
+        <div class="skeleton skeleton-text" style="width: 90%;"></div>
+        <div class="skeleton skeleton-text" style="width: 75%;"></div>
+      </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div class="card" style="margin-bottom: var(--space-6);" id="skills-section">
+      <div class="card-header">Skills</div>
+      <div class="card-body">
+        <div class="skills-list" id="skills-list">
+          <div class="skeleton" style="width: 80px; height: 28px; border-radius: 4px;"></div>
+          <div class="skeleton" style="width: 100px; height: 28px; border-radius: 4px;"></div>
+          <div class="skeleton" style="width: 70px; height: 28px; border-radius: 4px;"></div>
+          <div class="skeleton" style="width: 90px; height: 28px; border-radius: 4px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Portfolio Section -->
+    <div class="card" style="margin-bottom: var(--space-6);" id="portfolio-section">
+      <div class="card-header">Portfolio</div>
+      <div class="card-body">
+        <div class="portfolio-grid" id="portfolio-grid">
+          <div class="portfolio-item">
+            <div class="skeleton" style="width: 100%; height: 100%;"></div>
+          </div>
+          <div class="portfolio-item">
+            <div class="skeleton" style="width: 100%; height: 100%;"></div>
+          </div>
+          <div class="portfolio-item">
+            <div class="skeleton" style="width: 100%; height: 100%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hire Button -->
+    <div style="text-align: center; margin-bottom: var(--space-8);" id="hire-section">
+      <a href="#" class="btn btn-primary btn-lg" id="hire-btn" style="display: none;">
+        &#128188; Hire This Worker
+      </a>
+    </div>
+
+    <!-- Reviews Section -->
+    <div id="reviews-section">
+      <h3 style="margin-bottom: var(--space-4);">Reviews</h3>
+
+      <div class="review-list" id="reviews-list">
+        <!-- Skeleton loaders -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-card-user">
+              <div class="skeleton skeleton-avatar"></div>
+              <div>
+                <div class="skeleton skeleton-text" style="width: 120px;"></div>
+                <div class="skeleton skeleton-text" style="width: 80px;"></div>
+              </div>
+            </div>
+            <div class="skeleton" style="width: 80px; height: 16px;"></div>
+          </div>
+          <div class="skeleton skeleton-text" style="width: 100%; margin-top: 12px;"></div>
+          <div class="skeleton skeleton-text" style="width: 80%;"></div>
+        </div>
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-card-user">
+              <div class="skeleton skeleton-avatar"></div>
+              <div>
+                <div class="skeleton skeleton-text" style="width: 120px;"></div>
+                <div class="skeleton skeleton-text" style="width: 80px;"></div>
+              </div>
+            </div>
+            <div class="skeleton" style="width: 80px; height: 16px;"></div>
+          </div>
+          <div class="skeleton skeleton-text" style="width: 100%; margin-top: 12px;"></div>
+          <div class="skeleton skeleton-text" style="width: 80%;"></div>
+        </div>
+      </div>
+
+      <!-- Empty state for no reviews -->
+      <div class="empty-state" id="reviews-empty" style="display: none;">
+        <div class="empty-state-icon">&#9733;</div>
+        <h3>No Reviews Yet</h3>
+        <p>This worker hasn't received any reviews yet. Be the first to hire and review!</p>
+      </div>
+
+      <!-- Reviews Pagination -->
+      <div id="reviews-pagination"></div>
+    </div>
+  </main>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/toast.js"></script>
+  <script src="../js/skeleton.js"></script>
+  <script src="../js/modal.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/router.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+/* ========================================
+   AUTH PAGES (Login / Register)
+   ======================================== */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('../bglogin.png') no-repeat center center/cover;
+  padding: var(--space-4);
+}
+
+.auth-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(8px);
+}
+
+.auth-card {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 440px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-xl);
+  padding: var(--space-10);
+  animation: fadeInUp 0.5s ease;
+}
+
+.auth-logo {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.auth-logo h1 {
+  font-size: var(--font-size-2xl);
+  color: var(--navy);
+}
+
+.auth-logo h1 span {
+  color: var(--indigo);
+}
+
+.auth-logo p {
+  color: var(--gray-500);
+  font-size: var(--font-size-sm);
+  margin-bottom: 0;
+}
+
+.auth-form .form-group {
+  margin-bottom: var(--space-4);
+}
+
+.auth-form .btn-primary {
+  margin-top: var(--space-4);
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: var(--space-6);
+  font-size: var(--font-size-sm);
+  color: var(--gray-500);
+}
+
+.auth-footer a {
+  color: var(--indigo);
+  font-weight: 500;
+}
+
+.auth-divider {
+  text-align: center;
+  margin: var(--space-6) 0;
+  position: relative;
+}
+
+.auth-divider::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--gray-200);
+}
+
+.auth-divider span {
+  position: relative;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 0 var(--space-4);
+  color: var(--gray-400);
+  font-size: var(--font-size-sm);
+}
+
+.auth-role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  margin-bottom: var(--space-4);
+}
+
+.auth-role-badge.client { background: #DBEAFE; color: #1E40AF; }
+.auth-role-badge.worker { background: #DCFCE7; color: #166534; }
+.auth-role-badge.admin { background: #F3E8FF; color: #6B21A8; }
