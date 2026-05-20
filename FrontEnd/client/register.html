@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Client Registration - WorkersConnect</title>
+  <title>Client Registration — WorkersConnect</title>
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/components.css">
@@ -14,68 +14,86 @@
 </head>
 <body>
 
-  <div class="auth-page">
-    <div class="auth-overlay"></div>
+  <div class="auth-page role-client">
 
-    <div class="auth-card animate-fadeInUp">
-      <!-- Logo -->
-      <div class="auth-logo">
-        <h1>Workers<span>Connect</span></h1>
-        <p>Create an account to hire workers</p>
+    <!-- Left brand panel -->
+    <div class="auth-left animate-fadeIn">
+      <div class="auth-left-bg"></div>
+      <div class="auth-left-deco">
+        <span></span><span></span><span></span>
       </div>
 
-      <!-- Role Badge -->
-      <div style="text-align: center;">
-        <span class="auth-role-badge client">&#128100; Client</span>
+      <div class="auth-brand-mark">
+        <div class="mark">🔧</div>
+        WorkersConnect
       </div>
 
-      <!-- Register Form -->
-      <form class="auth-form" id="register-form" novalidate>
-        <div class="form-group">
-          <label class="form-label" for="full_name">Full Name</label>
-          <input type="text" id="full_name" name="full_name" class="form-input" placeholder="Enter your full name" required>
-          <span class="form-error" id="full_name-error"></span>
+      <h2 class="auth-left-heading">Your Next Great Project Starts Here</h2>
+      <p class="auth-left-sub">Join thousands of clients who find and hire skilled professionals on WorkersConnect.</p>
+
+      <div class="auth-features">
+        <div class="auth-feature-item">
+          <div class="auth-feature-icon">🔍</div>
+          Search & filter by category
         </div>
-
-        <div class="form-group">
-          <label class="form-label" for="email">Email Address</label>
-          <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
-          <span class="form-error" id="email-error"></span>
+        <div class="auth-feature-item">
+          <div class="auth-feature-icon">📅</div>
+          Book at your convenience
         </div>
-
-        <div class="form-group">
-          <label class="form-label" for="phone">Phone Number</label>
-          <input type="tel" id="phone" name="phone" class="form-input" placeholder="Enter your phone number" required>
-          <span class="form-error" id="phone-error"></span>
+        <div class="auth-feature-item">
+          <div class="auth-feature-icon">⭐</div>
+          Leave reviews after every job
         </div>
-
-        <div class="form-group">
-          <label class="form-label" for="password">Password</label>
-          <input type="password" id="password" name="password" class="form-input" placeholder="Create a password" required>
-          <span class="form-error" id="password-error"></span>
-          <span class="form-hint">Minimum 6 characters</span>
-        </div>
-
-        <button type="submit" class="btn btn-primary btn-block btn-lg" id="register-btn">
-          Create Account
-        </button>
-      </form>
-
-      <!-- Footer Links -->
-      <div class="auth-footer">
-        Already have an account? <a href="login.html">Sign in</a>
       </div>
+    </div>
 
-      <div class="auth-footer" style="margin-top: var(--space-3);">
-        <a href="/">&#8592; Back to Home</a>
+    <!-- Right form panel -->
+    <div class="auth-right">
+      <div class="auth-card">
+        <div class="auth-logo">
+          <h1>Create Account</h1>
+          <p>Join as a client and start hiring</p>
+        </div>
+
+        <div style="text-align:center;">
+          <span class="auth-role-badge client">👥 Client</span>
+        </div>
+
+        <form class="auth-form" id="register-form" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="full_name">Full Name</label>
+            <input type="text" id="full_name" name="full_name" class="form-input" placeholder="Your full name" required>
+            <span class="form-error" id="full_name-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required>
+            <span class="form-error" id="email-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" class="form-input" placeholder="Your phone number" required>
+            <span class="form-error" id="phone-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="password">Password</label>
+            <input type="password" id="password" name="password" class="form-input" placeholder="Create a password" required>
+            <span class="form-error" id="password-error"></span>
+            <span class="form-hint">Minimum 6 characters</span>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg" id="register-btn">Create Account</button>
+        </form>
+
+        <div class="auth-footer">Already have an account? <a href="login.html">Sign in</a></div>
+        <div class="auth-footer" style="margin-top:var(--space-2);"><a href="/">← Back to Home</a></div>
       </div>
     </div>
   </div>
 
-  <!-- Toast Container -->
-  <div class="toast-container" id="toast-container"></div>
-
-  <!-- Scripts -->
   <script src="../js/config.js"></script>
   <script src="../js/api.js"></script>
   <script src="../js/auth.js"></script>

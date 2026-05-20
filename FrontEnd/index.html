@@ -1,161 +1,389 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Workers Connect</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workers Connect — Find Skilled Professionals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<style>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family: Arial, Helvetica, sans-serif;
-}
+    :root {
+      --navy:   #0B1437;
+      --indigo: #4F46E5;
+      --amber:  #F59E0B;
+      --orange: #FB923C;
+      --purple: #7C3AED;
+      --cream:  #FFF8F1;
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-out:    cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-body{
-height:100vh;
-background:url("bglogin.png") no-repeat center center/cover;
-display:flex;
-align-items:center;
-justify-content:center;
-}
+    html { scroll-behavior: smooth; }
 
-.overlay{
-width:100%;
-height:100%;
-background:rgba(255,255,255,0.85);
-display:flex;
-align-items:center;
-justify-content:center;
-}
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      background: #FFF8F1;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
 
-.container{
-text-align:center;
-}
+    /* ── Background ── */
+    .hero-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: url('bglogin.png') no-repeat center center / cover;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(255,248,241,0.88) 0%,
+        rgba(253,242,227,0.78) 40%,
+        rgba(238,242,255,0.82) 100%
+      );
+    }
 
-.container h1{
-font-size:48px;
-color:#1f2937;
-margin-bottom:10px;
-}
+    /* ── Floating blobs ── */
+    .blobs {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      animation: float 10s ease-in-out infinite;
+    }
+    .blob-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(79,70,229,0.18), transparent 70%);
+      top: -200px; right: -100px;
+      animation-duration: 13s;
+    }
+    .blob-2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(245,158,11,0.2), transparent 70%);
+      bottom: -150px; left: -80px;
+      animation-duration: 9s;
+      animation-delay: -4s;
+    }
+    .blob-3 {
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(124,58,237,0.15), transparent 70%);
+      top: 35%; left: 55%;
+      animation-duration: 15s;
+      animation-delay: -8s;
+    }
 
-.subtitle{
-color:#555;
-margin-bottom:50px;
-font-size:18px;
-}
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      33%       { transform: translateY(-20px) scale(1.03); }
+      66%       { transform: translateY(12px) scale(0.97); }
+    }
 
-.cards{
-display:flex;
-gap:40px;
-justify-content:center;
-flex-wrap:wrap;
-}
+    /* ── Main container ── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px 64px;
+      text-align: center;
+    }
 
-.card{
-width:300px;
-padding:40px 30px;
-border-radius:15px;
-color:white;
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
-transition:0.3s;
-cursor:pointer;
-}
+    /* ── Logo mark ── */
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      animation: fadeInDown 0.6s var(--ease-out) both;
+    }
+    .logo-icon {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, #4F46E5, #7C3AED);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 8px 24px rgba(79,70,229,0.35);
+    }
+    .logo-text {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--navy);
+      letter-spacing: -0.03em;
+    }
+    .logo-text span { color: var(--indigo); }
 
-.card:hover{
-transform:translateY(-10px);
-}
+    /* ── Heading ── */
+    .hero-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--indigo) 60%, var(--purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+      animation: fadeInUp 0.6s var(--ease-out) 0.1s both;
+    }
 
-.icon{
-font-size:40px;
-margin-bottom:20px;
-}
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: #475569;
+      font-weight: 400;
+      max-width: 520px;
+      line-height: 1.6;
+      margin-bottom: 56px;
+      animation: fadeInUp 0.6s var(--ease-out) 0.2s both;
+    }
 
-.card h2{
-font-size:28px;
-margin-bottom:10px;
-}
+    /* ── Role Cards ── */
+    .cards {
+      display: flex;
+      gap: 28px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
 
-.card p{
-font-size:15px;
-}
+    .card-link { text-decoration: none; }
 
-.client{
-background:linear-gradient(135deg,#3b82f6,#2563eb);
-}
+    .role-card {
+      position: relative;
+      width: 280px;
+      padding: 40px 32px 36px;
+      border-radius: 28px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-out);
+      animation: fadeInUp 0.6s var(--ease-spring) both;
+    }
+    .role-card:nth-child(1) { animation-delay: 0.3s; }
+    .role-card:nth-child(2) { animation-delay: 0.42s; }
+    .role-card:nth-child(3) { animation-delay: 0.54s; }
 
-.worker{
-background:linear-gradient(135deg,#22c55e,#16a34a);
-}
+    .role-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.12);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .role-card:hover::before { opacity: 1; }
+    .role-card:hover {
+      transform: translateY(-12px) scale(1.02);
+    }
+    .role-card:active { transform: translateY(-6px) scale(0.99); }
 
-.admin{
-background:linear-gradient(135deg,#a855f7,#9333ea);
-}
+    /* Shimmer sweep on hover */
+    .role-card::after {
+      content: '';
+      position: absolute;
+      top: -50%; left: -75%;
+      width: 50%; height: 200%;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.25), transparent);
+      transform: skewX(-15deg);
+      transition: left 0.6s var(--ease-out);
+    }
+    .role-card:hover::after { left: 150%; }
 
-.footer{
-margin-top:40px;
-color:#444;
-}
+    .role-card.client {
+      background: linear-gradient(145deg, #3730A3 0%, #4F46E5 50%, #6366F1 100%);
+      box-shadow: 0 16px 48px rgba(79,70,229,0.35);
+    }
+    .role-card.client:hover { box-shadow: 0 28px 60px rgba(79,70,229,0.45); }
 
-.card-link{
-text-decoration:none;
-color:inherit;
-}
+    .role-card.worker {
+      background: linear-gradient(145deg, #92400E 0%, #D97706 40%, #F59E0B 80%, #FB923C 100%);
+      box-shadow: 0 16px 48px rgba(245,158,11,0.4);
+    }
+    .role-card.worker:hover { box-shadow: 0 28px 60px rgba(245,158,11,0.5); }
 
-</style>
+    .role-card.admin {
+      background: linear-gradient(145deg, #4C1D95 0%, #7C3AED 50%, #A855F7 100%);
+      box-shadow: 0 16px 48px rgba(124,58,237,0.35);
+    }
+    .role-card.admin:hover { box-shadow: 0 28px 60px rgba(124,58,237,0.45); }
 
+    /* Icon ring */
+    .card-icon-wrap {
+      width: 72px; height: 72px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 2.2rem;
+      transition: transform 0.4s var(--ease-spring);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .role-card:hover .card-icon-wrap { transform: scale(1.12) rotate(-5deg); }
+
+    .card-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+    .card-desc {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.55;
+      margin-bottom: 28px;
+    }
+
+    /* "Continue →" pill */
+    .card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 999px;
+      padding: 8px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #fff;
+      transition: all 0.3s var(--ease-out);
+    }
+    .card-cta .arrow {
+      display: inline-block;
+      transition: transform 0.3s var(--ease-spring);
+    }
+    .role-card:hover .card-cta {
+      background: rgba(255,255,255,0.28);
+      padding-right: 26px;
+    }
+    .role-card:hover .card-cta .arrow { transform: translateX(4px); }
+
+    /* ── Footer tagline ── */
+    .footer-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: 999px;
+      color: #475569;
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: 0 4px 16px rgba(11,20,55,0.08);
+      animation: fadeInUp 0.6s var(--ease-out) 0.7s both;
+    }
+    .footer-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--indigo), var(--purple));
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.6; transform: scale(0.85); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .cards { gap: 20px; }
+      .role-card { width: 100%; max-width: 340px; padding: 32px 28px; }
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="overlay">
+  <!-- Background -->
+  <div class="hero-bg"></div>
 
-<div class="container">
+  <!-- Floating blobs -->
+  <div class="blobs" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
 
-<h1>Workers Connect</h1>
-<p class="subtitle">Connecting local workers with clients seamlessly</p>
+  <!-- Hero content -->
+  <main class="hero">
 
-<div class="cards">
+    <!-- Logo mark -->
+    <div class="logo-mark">
+      <div class="logo-icon">🔧</div>
+      <span class="logo-text">Workers<span>Connect</span></span>
+    </div>
 
-<!-- CLIENT -->
+    <h1 class="hero-heading">Connect. Work. Thrive.</h1>
+    <p class="hero-sub">The platform that bridges skilled professionals with clients who need them — fast, trusted, local.</p>
 
-<a href="client/login.html" class="card-link">
-<div class="card client">
-<div class="icon">👥</div>
-<h2>Client</h2>
-<p>Find skilled workers for your projects</p>
-</div>
-</a>
+    <!-- Role cards -->
+    <div class="cards">
 
-<!-- WORKER -->
+      <a href="client/login.html" class="card-link">
+        <div class="role-card client">
+          <div class="card-icon-wrap">👥</div>
+          <div class="card-title">Client</div>
+          <div class="card-desc">Find skilled workers for your projects and get things done the right way.</div>
+          <div class="card-cta">Get Started <span class="arrow">→</span></div>
+        </div>
+      </a>
 
-<a href="worker/login.html" class="card-link">
-<div class="card worker">
-<div class="icon">🔧</div>
-<h2>Worker</h2>
-<p>Connect with clients and grow your business</p>
-</div>
-</a>
+      <a href="worker/login.html" class="card-link">
+        <div class="role-card worker">
+          <div class="card-icon-wrap">🔧</div>
+          <div class="card-title">Worker</div>
+          <div class="card-desc">Showcase your skills, connect with clients, and grow your business.</div>
+          <div class="card-cta">Get Started <span class="arrow">→</span></div>
+        </div>
+      </a>
 
-<!-- ADMIN -->
+      <a href="admin/login.html" class="card-link">
+        <div class="role-card admin">
+          <div class="card-icon-wrap">🛡️</div>
+          <div class="card-title">Admin</div>
+          <div class="card-desc">Manage the platform, approve workers, and keep everything running smoothly.</div>
+          <div class="card-cta">Sign In <span class="arrow">→</span></div>
+        </div>
+      </a>
 
-<a href="admin/login.html" class="card-link">
-<div class="card admin">
-<div class="icon">🛡️</div>
-<h2>Admin</h2>
-<p>Manage platform and approve workers</p>
-</div>
-</a>
+    </div>
 
-</div>
+    <!-- Footer -->
+    <div class="footer-pill">
+      <div class="footer-dot"></div>
+      Select your role to continue
+    </div>
 
-<p class="footer">Select your role to continue</p>
-
-</div>
-
-</div>
+  </main>
 
 </body>
 </html>

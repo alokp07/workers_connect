@@ -5,6 +5,7 @@ const modal = {
       overlay.className = 'modal-overlay';
       overlay.innerHTML = `
         <div class="modal">
+          <div class="modal-accent-bar"></div>
           <div class="modal-header">
             <h3>${title}</h3>
             <button class="modal-close" data-action="cancel">&times;</button>
@@ -36,6 +37,7 @@ const modal = {
       overlay.className = 'modal-overlay';
       overlay.innerHTML = `
         <div class="modal">
+          <div class="modal-accent-bar"></div>
           <div class="modal-header">
             <h3>${title}</h3>
             <button class="modal-close" data-action="cancel">&times;</button>
@@ -84,6 +86,7 @@ const modal = {
       overlay.className = 'modal-overlay';
       overlay.innerHTML = `
         <div class="modal">
+          <div class="modal-accent-bar"></div>
           <div class="modal-header">
             <h3>${title}</h3>
             <button class="modal-close" data-action="cancel">&times;</button>

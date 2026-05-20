@@ -1,3 +1,17 @@
+function friendlyError(err) {
+  const msg = (err?.message || '').toLowerCase();
+  if (msg.includes('password') || msg.includes('credentials') || msg.includes('incorrect')) return err.message;
+  if (msg.includes('validation') || msg.includes('required') || msg.includes('must be') || msg.includes('invalid email')) return err.message;
+  if (msg.includes('duplicate') || msg.includes('unique') || msg.includes('already exists') || msg.includes('primary key') || msg.includes('23505')) return 'This already exists. Please try a different value.';
+  if (msg.includes('foreign key') || msg.includes('violates') || msg.includes('constraint') || msg.includes('23503')) return 'This action conflicts with existing data.';
+  if (msg.includes('not found') || msg.includes('404')) return "We couldn't find what you're looking for.";
+  if (msg.includes('unauthorized') || msg.includes('invalid token') || msg.includes('jwt') || msg.includes('401')) return 'Your session expired. Please sign in again.';
+  if (msg.includes('forbidden') || msg.includes('permission') || msg.includes('403')) return "You don't have permission to do this.";
+  if (msg.includes('failed to fetch') || msg.includes('network') || msg.includes('networkerror')) return 'Network issue. Please check your connection and try again.';
+  if (msg.includes('this login is for')) return err.message;
+  return "Something went wrong. We're already on it — please try again.";
+}
+
 function formatDate(dateStr) {
   if (!dateStr) return '—';
   const d = new Date(dateStr);

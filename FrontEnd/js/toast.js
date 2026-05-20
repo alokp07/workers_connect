@@ -10,15 +10,18 @@ const toast = {
 
   show(message, type = 'info', duration = 4000) {
     this.init();
-    const icons = { success: '\u2713', error: '\u2717', warning: '\u26A0', info: '\u2139' };
+
+    const icons = { success: '✓', error: '✕', warning: '⚠', info: 'ℹ' };
     const el = document.createElement('div');
     el.className = `toast toast-${type}`;
     el.innerHTML = `
-      <span>${icons[type] || ''}</span>
-      <span>${message}</span>
-      <button class="toast-close" onclick="this.parentElement.remove()">&times;</button>
+      <div class="toast-icon">${icons[type] || 'ℹ'}</div>
+      <div class="toast-message">${message}</div>
+      <button class="toast-close" onclick="this.closest('.toast').remove()">&times;</button>
+      <div class="toast-progress" style="animation-duration:${duration}ms"></div>
     `;
     this.container.appendChild(el);
+
     setTimeout(() => {
       el.style.animation = 'slideOutRight 0.3s ease forwards';
       setTimeout(() => el.remove(), 300);
@@ -26,7 +29,7 @@ const toast = {
   },
 
   success(msg) { this.show(msg, 'success'); },
-  error(msg) { this.show(msg, 'error'); },
+  error(msg)   { this.show(msg, 'error'); },
   warning(msg) { this.show(msg, 'warning'); },
-  info(msg) { this.show(msg, 'info'); },
+  info(msg)    { this.show(msg, 'info'); },
 };

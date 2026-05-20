@@ -47,7 +47,7 @@ function initLogin() {
       toast.success('Login successful!');
       window.location.href = '/client/dashboard.html';
     } catch (err) {
-      toast.error(err.message);
+      toast.error(friendlyError(err));
       btn.disabled = false;
       btn.textContent = 'Sign In';
     }
@@ -89,7 +89,7 @@ function initRegister() {
       toast.success('Registration successful!');
       window.location.href = '/client/dashboard.html';
     } catch (err) {
-      toast.error(err.message);
+      toast.error(friendlyError(err));
       btn.disabled = false;
       btn.textContent = 'Create Account';
     }
@@ -388,7 +388,7 @@ async function initBookForm() {
       toast.success('Booking submitted successfully!');
       setTimeout(() => window.location.href = '/client/bookings.html', 1500);
     } catch (err) {
-      toast.error(err.message);
+      toast.error(friendlyError(err));
       btn.disabled = false;
       btn.textContent = 'Submit Booking';
     }
@@ -489,7 +489,7 @@ async function cancelBooking(bookingId) {
     toast.success('Booking cancelled');
     loadBookings();
   } catch (err) {
-    toast.error(err.message);
+    toast.error(friendlyError(err));
   }
 }
 window.cancelBooking = cancelBooking;
@@ -587,7 +587,7 @@ async function initReviewForm() {
       toast.success('Review submitted successfully!');
       setTimeout(() => window.location.href = '/client/bookings.html', 1500);
     } catch (err) {
-      toast.error(err.message);
+      toast.error(friendlyError(err));
       btn.disabled = false;
       btn.textContent = 'Submit Review';
     }

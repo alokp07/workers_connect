@@ -3,9 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Profile - WorkersConnect</title>
-
-  <!-- Shared CSS -->
+  <title>My Profile — WorkersConnect</title>
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/components.css">
@@ -16,211 +14,169 @@
 </head>
 <body>
 
-  <!-- Toast Container -->
+  <div class="page-blobs" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
   <div class="toast-container" id="toast-container"></div>
 
-  <!-- Header -->
   <header class="header">
-    <a href="dashboard.html" class="header-brand">
-      Workers<span>Connect</span>
-    </a>
-
+    <a href="dashboard.html" class="header-brand">Workers<span>Connect</span></a>
     <nav class="header-nav">
       <a href="dashboard.html" class="btn btn-ghost">Dashboard</a>
-      <a href="profile.html" class="btn btn-ghost active">Profile</a>
+      <a href="profile.html" class="btn btn-ghost">Profile</a>
       <a href="bookings.html" class="btn btn-ghost">Bookings</a>
       <a href="reviews.html" class="btn btn-ghost">Reviews</a>
       <button class="btn btn-outline btn-sm" id="logout-btn">Logout</button>
     </nav>
   </header>
 
-  <!-- Main Content -->
   <main class="main-content">
-    <!-- Page Header -->
+
     <div class="page-header">
       <h1>My Profile</h1>
-      <p>Manage your profile information and settings</p>
+      <p>Manage your professional profile and settings</p>
     </div>
 
-    <!-- Profile Header Section -->
-    <div class="profile-header" id="profile-header">
-      <!-- Avatar Section -->
-      <div class="profile-avatar-section">
-        <div class="avatar avatar-xl" id="profile-avatar">
-          <div class="skeleton skeleton-avatar" style="width: 96px; height: 96px;"></div>
-        </div>
-        <label class="btn btn-outline btn-sm" style="margin-top: var(--space-3); cursor: pointer;">
-          Change Photo
-          <input type="file" id="avatar-input" accept="image/*" style="display: none;">
-        </label>
+    <!-- Profile Hero -->
+    <div class="profile-hero animate-fadeInUp">
+      <!-- Banner -->
+      <div class="profile-hero-banner">
+        <div class="blob-banner"></div>
+        <div class="blob-banner"></div>
       </div>
-
-      <!-- Profile Info -->
-      <div class="profile-info">
-        <h2 id="profile-name">
-          <span class="skeleton skeleton-title" style="width: 200px; display: inline-block;"></span>
-        </h2>
-        <p id="profile-category" style="margin-bottom: var(--space-2);">
-          <span class="skeleton skeleton-text" style="width: 150px; display: inline-block;"></span>
-        </p>
-        <div class="stars" id="profile-rating">
-          <span class="skeleton skeleton-text" style="width: 100px; display: inline-block;"></span>
+      <!-- Info bar -->
+      <div class="profile-header" id="profile-header">
+        <div class="profile-avatar-section">
+          <div class="avatar avatar-xl" id="profile-avatar">
+            <div class="skeleton skeleton-avatar" style="width:96px;height:96px;"></div>
+          </div>
+          <label class="btn btn-outline btn-sm" style="margin-top:var(--space-3);cursor:pointer;border-radius:var(--radius-full);">
+            📷 Change Photo
+            <input type="file" id="avatar-input" accept="image/*" style="display:none;">
+          </label>
         </div>
-
-        <!-- Profile Stats -->
-        <div class="profile-stats" id="profile-stats">
-          <div class="profile-stat">
-            <div class="profile-stat-value" id="profile-jobs-count">
-              <span class="skeleton skeleton-text" style="width: 30px; display: inline-block;"></span>
-            </div>
-            <div class="profile-stat-label">Jobs Done</div>
+        <div class="profile-info">
+          <h2 id="profile-name">
+            <span class="skeleton skeleton-title" style="width:200px;display:inline-block;"></span>
+          </h2>
+          <p id="profile-category" style="color:var(--brand-indigo);font-weight:600;margin-bottom:var(--space-2);">
+            <span class="skeleton skeleton-text" style="width:150px;display:inline-block;"></span>
+          </p>
+          <div class="stars" id="profile-rating">
+            <span class="skeleton skeleton-text" style="width:100px;display:inline-block;"></span>
           </div>
-          <div class="profile-stat">
-            <div class="profile-stat-value" id="profile-experience">
-              <span class="skeleton skeleton-text" style="width: 30px; display: inline-block;"></span>
+          <div class="profile-stats" id="profile-stats">
+            <div class="profile-stat">
+              <div class="profile-stat-value" id="profile-jobs-count">
+                <span class="skeleton skeleton-text" style="width:30px;display:inline-block;"></span>
+              </div>
+              <div class="profile-stat-label">Jobs Done</div>
             </div>
-            <div class="profile-stat-label">Years Exp.</div>
-          </div>
-          <div class="profile-stat">
-            <div class="profile-stat-value" id="profile-reviews-count">
-              <span class="skeleton skeleton-text" style="width: 30px; display: inline-block;"></span>
+            <div class="profile-stat">
+              <div class="profile-stat-value" id="profile-experience">
+                <span class="skeleton skeleton-text" style="width:30px;display:inline-block;"></span>
+              </div>
+              <div class="profile-stat-label">Years Exp.</div>
             </div>
-            <div class="profile-stat-label">Reviews</div>
+            <div class="profile-stat">
+              <div class="profile-stat-value" id="profile-reviews-count">
+                <span class="skeleton skeleton-text" style="width:30px;display:inline-block;"></span>
+              </div>
+              <div class="profile-stat-label">Reviews</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Edit Profile Form -->
-    <div class="card">
-      <div class="card-header">Edit Profile</div>
-      <div class="card-body">
+    <div class="section-card animate-fadeInUp" style="animation-delay:0.1s;">
+      <div class="section-card-header">
+        <div class="section-icon">✏️</div>
+        Edit Profile
+      </div>
+      <div class="section-card-body">
         <form id="profile-form">
-          <!-- Bio -->
           <div class="form-group">
             <label class="form-label" for="bio">Bio</label>
-            <textarea
-              id="bio"
-              name="bio"
-              class="form-textarea"
-              placeholder="Tell clients about yourself..."
-              rows="4"
-            ></textarea>
-            <span class="form-hint">Describe your expertise and what makes you stand out</span>
+            <textarea id="bio" name="bio" class="form-textarea" placeholder="Tell clients about yourself, your expertise and what makes you stand out..." rows="4"></textarea>
+            <span class="form-hint">A great bio increases your chances of getting hired</span>
             <span class="form-error" id="bio-error"></span>
           </div>
 
-          <!-- Category -->
           <div class="form-group">
             <label class="form-label" for="category_id">Service Category</label>
             <select id="category_id" name="category_id" class="form-select">
               <option value="">Select a category</option>
-              <!-- Options populated by worker.js -->
             </select>
             <span class="form-error" id="category_id-error"></span>
           </div>
 
-          <!-- Skills -->
           <div class="form-group">
             <label class="form-label" for="skills">Skills</label>
-            <input
-              type="text"
-              id="skills"
-              name="skills"
-              class="form-input"
-              placeholder="e.g. Plumbing, Pipe Fitting, Drain Cleaning"
-            >
+            <input type="text" id="skills" name="skills" class="form-input" placeholder="e.g. Plumbing, Pipe Fitting, Drain Cleaning">
             <span class="form-hint">Enter your skills separated by commas</span>
             <span class="form-error" id="skills-error"></span>
           </div>
 
-          <!-- Current Skills Display -->
           <div class="form-group">
             <label class="form-label">Current Skills</label>
-            <div class="skills-list" id="skills-display">
-              <span class="skeleton skeleton-text" style="width: 80px;"></span>
-              <span class="skeleton skeleton-text" style="width: 100px;"></span>
-              <span class="skeleton skeleton-text" style="width: 70px;"></span>
+            <div class="skills-list" id="skills-list">
+              <span class="skeleton skeleton-text" style="width:80px;"></span>
+              <span class="skeleton skeleton-text" style="width:100px;"></span>
+              <span class="skeleton skeleton-text" style="width:70px;"></span>
             </div>
           </div>
 
-          <!-- Years of Experience -->
           <div class="form-group">
             <label class="form-label" for="years_experience">Years of Experience</label>
-            <input
-              type="number"
-              id="years_experience"
-              name="years_experience"
-              class="form-input"
-              placeholder="e.g. 5"
-              min="0"
-              max="50"
-            >
+            <input type="number" id="years_experience" name="years_experience" class="form-input" placeholder="e.g. 5" min="0" max="50">
             <span class="form-error" id="years_experience-error"></span>
           </div>
 
-          <!-- Location -->
           <div class="form-group">
             <label class="form-label" for="location">Location</label>
-            <input
-              type="text"
-              id="location"
-              name="location"
-              class="form-input"
-              placeholder="e.g. Mumbai, Maharashtra"
-            >
+            <input type="text" id="location" name="location" class="form-input" placeholder="e.g. Mumbai, Maharashtra">
             <span class="form-error" id="location-error"></span>
           </div>
 
-          <!-- Portfolio URLs -->
           <div class="form-group">
             <label class="form-label" for="portfolio_urls">Portfolio URLs</label>
-            <textarea
-              id="portfolio_urls"
-              name="portfolio_urls"
-              class="form-textarea"
-              placeholder="Enter portfolio URLs, one per line"
-              rows="3"
-            ></textarea>
-            <span class="form-hint">Add links to your work samples or portfolio (one URL per line)</span>
+            <textarea id="portfolio_urls" name="portfolio_urls" class="form-textarea" placeholder="Enter portfolio URLs, one per line" rows="3"></textarea>
+            <span class="form-hint">Add links to your work samples (one URL per line)</span>
             <span class="form-error" id="portfolio_urls-error"></span>
           </div>
 
-          <!-- Portfolio Display -->
-          <div class="form-group" id="portfolio-section" style="display: none;">
+          <div class="form-group" id="portfolio-section" style="display:none;">
             <label class="form-label">Current Portfolio</label>
-            <div class="portfolio-grid" id="portfolio-display">
-              <!-- Populated by worker.js -->
-            </div>
+            <div class="portfolio-grid" id="portfolio-display"></div>
           </div>
 
-          <!-- Availability Toggle -->
           <div class="form-group">
             <label class="form-label">Availability</label>
-            <div style="display: flex; align-items: center; gap: var(--space-3);">
-              <label style="display: flex; align-items: center; gap: var(--space-2); cursor: pointer;">
-                <input type="checkbox" id="availability" name="availability" style="width: 18px; height: 18px; accent-color: var(--green);">
-                <span id="availability-label" style="font-size: var(--font-size-sm); color: var(--gray-600);">
-                  Available for new jobs
-                </span>
+            <div style="display:flex;align-items:center;gap:var(--space-3);padding:var(--space-4);background:rgba(34,197,94,0.05);border:1px solid rgba(34,197,94,0.15);border-radius:var(--radius-lg);">
+              <label style="display:flex;align-items:center;gap:var(--space-3);cursor:pointer;flex:1;">
+                <input type="checkbox" id="availability" name="availability" style="width:20px;height:20px;accent-color:var(--green);cursor:pointer;">
+                <div>
+                  <span id="availability-label" style="font-weight:600;font-size:var(--font-size-sm);color:var(--gray-700);">Available for new jobs</span>
+                  <p style="font-size:var(--font-size-xs);color:var(--gray-500);margin:0;">Toggle to show/hide your availability to clients</p>
+                </div>
               </label>
-              <span class="badge badge-accepted" id="availability-badge" style="display: none;">Available</span>
-              <span class="badge badge-cancelled" id="unavailability-badge" style="display: none;">Unavailable</span>
             </div>
           </div>
 
-          <!-- Save Button -->
-          <div style="margin-top: var(--space-6);">
-            <button type="submit" class="btn btn-primary btn-lg" id="save-profile-btn">
-              Save Profile
-            </button>
+          <div style="margin-top:var(--space-6);">
+            <button type="submit" class="btn btn-primary btn-lg" id="save-profile-btn">Save Changes</button>
           </div>
         </form>
       </div>
     </div>
+
   </main>
 
-  <!-- Shared JS -->
   <script src="../js/config.js"></script>
   <script src="../js/api.js"></script>
   <script src="../js/auth.js"></script>

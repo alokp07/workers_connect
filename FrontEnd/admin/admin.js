@@ -48,7 +48,7 @@ function initLogin() {
       toast.success('Login successful!');
       window.location.href = '/admin/dashboard.html';
     } catch (err) {
-      toast.error(err.message);
+      toast.error(friendlyError(err));
       btn.disabled = false;
       btn.textContent = 'Sign In';
     }
@@ -172,7 +172,7 @@ async function handleApproval(id, status) {
     toast.success(`Worker ${status}`);
     loadApprovals();
   } catch (err) {
-    toast.error(err.message);
+    toast.error(friendlyError(err));
   }
 }
 window.handleApproval = handleApproval;
@@ -270,7 +270,7 @@ async function toggleBlock(userId, isBlocked) {
     toast.success(`User ${action}ed`);
     loadUsers();
   } catch (err) {
-    toast.error(err.message);
+    toast.error(friendlyError(err));
   }
 }
 window.toggleBlock = toggleBlock;
@@ -333,7 +333,7 @@ async function showCategoryModal(id = '', name = '', icon = '') {
     }
     loadCategories();
   } catch (err) {
-    toast.error(err.message);
+    toast.error(friendlyError(err));
   }
 }
 
@@ -351,7 +351,7 @@ async function deleteCategory(id, name) {
     toast.success('Category deleted');
     loadCategories();
   } catch (err) {
-    toast.error(err.message);
+    toast.error(friendlyError(err));
   }
 }
 window.deleteCategory = deleteCategory;
@@ -462,7 +462,7 @@ async function removeReview(id) {
     toast.success('Review removed');
     loadReviews();
   } catch (err) {
-    toast.error(err.message);
+    toast.error(friendlyError(err));
   }
 }
 window.removeReview = removeReview;

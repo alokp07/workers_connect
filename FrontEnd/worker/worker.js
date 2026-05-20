@@ -52,7 +52,7 @@ function initLogin() {
         window.location.href = '/worker/dashboard.html';
       }
     } catch (err) {
-      toast.error(err.message);
+      toast.error(friendlyError(err));
       btn.disabled = false;
       btn.textContent = 'Sign In';
     }
@@ -111,7 +111,7 @@ function initRegister() {
       toast.success('Registration successful! Awaiting approval.');
       window.location.href = '/worker/pending-approval.html';
     } catch (err) {
-      toast.error(err.message);
+      toast.error(friendlyError(err));
       btn.disabled = false;
       btn.textContent = 'Create Account';
     }
@@ -265,7 +265,7 @@ async function handleBookingAction(bookingId, action) {
     toast.success(`Booking ${action}ed successfully`);
     loadDashboardData();
   } catch (err) {
-    toast.error(err.message);
+    toast.error(friendlyError(err));
   }
 }
 window.handleBookingAction = handleBookingAction;
@@ -348,7 +348,7 @@ async function initProfile() {
           toast.success('Profile updated successfully');
           initProfile();
         } catch (err) {
-          toast.error(err.message);
+          toast.error(friendlyError(err));
         } finally {
           saveBtn.disabled = false;
           saveBtn.textContent = 'Save Profile';
@@ -368,7 +368,7 @@ async function initProfile() {
           toast.success('Avatar updated');
           initProfile();
         } catch (err) {
-          toast.error(err.message);
+          toast.error(friendlyError(err));
         }
       });
     }
@@ -451,7 +451,7 @@ async function initReviews() {
       const count = reviews.filter(r => r.rating === i).length;
       const pct = total > 0 ? (count / total * 100) : 0;
       const bar = document.getElementById(`bar-${i}`);
-      if (bar) bar.style.width = `${pct}%`;
+      if (bar) { bar.classList.remove('skeleton'); bar.style.width = `${pct}%`; bar.style.background = 'var(--brand-amber)'; }
       setText(`count-${i}`, count);
     }
 
@@ -507,7 +507,7 @@ async function replyToReview(reviewId) {
     toast.success('Reply submitted');
     initReviews();
   } catch (err) {
-    toast.error(err.message);
+    toast.error(friendlyError(err));
   }
 }
 window.replyToReview = replyToReview;

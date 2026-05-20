@@ -1,57 +1,36 @@
-/* ========================================
-   KEYFRAMES
-   ======================================== */
+/* ── Core Keyframes ── */
 @keyframes fadeIn {
   from { opacity: 0; }
-  to { opacity: 1; }
+  to   { opacity: 1; }
 }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(80px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes slideOutRight {
-  from {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateX(100px);
-  }
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(80px); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 @keyframes shimmer {
-  0% { background-position: 200% 0; }
+  0%   { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }
 
@@ -61,61 +40,90 @@
 
 @keyframes pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  50%       { opacity: 0.5; }
 }
 
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50%       { transform: translateY(-10px); }
 }
 
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+/* ── New: Blob float ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  33%       { transform: translateY(-18px) scale(1.03); }
+  66%       { transform: translateY(10px) scale(0.97); }
 }
 
-/* ========================================
-   UTILITY CLASSES
-   ======================================== */
-.animate-fadeIn { animation: fadeIn 0.3s ease; }
-.animate-fadeInUp { animation: fadeInUp 0.4s ease; }
-.animate-fadeInDown { animation: fadeInDown 0.4s ease; }
-.animate-pulse { animation: pulse 2s infinite; }
-.animate-bounce { animation: bounce 1s infinite; }
+@keyframes floatAlt {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%       { transform: translateY(-24px) rotate(8deg); }
+}
 
-/* Staggered entrance */
+/* ── New: Toast progress bar drain ── */
+@keyframes progressDrain {
+  from { width: 100%; }
+  to   { width: 0%; }
+}
+
+/* ── New: Count-up pulse on numbers ── */
+@keyframes countPop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+/* ── New: Gradient shift (for buttons/borders) ── */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ── New: Ripple ── */
+@keyframes ripple {
+  from { transform: scale(0); opacity: 0.4; }
+  to   { transform: scale(2.5); opacity: 0; }
+}
+
+/* ── Utility Classes ── */
+.animate-fadeIn    { animation: fadeIn    0.3s ease; }
+.animate-fadeInUp  { animation: fadeInUp  0.45s var(--ease-out); }
+.animate-fadeInDown{ animation: fadeInDown 0.4s var(--ease-out); }
+.animate-scaleIn   { animation: scaleIn   0.35s var(--ease-spring); }
+.animate-pulse     { animation: pulse 2s infinite; }
+.animate-bounce    { animation: bounce 1.2s ease-in-out infinite; }
+.animate-spin      { animation: spin 0.7s linear infinite; }
+.animate-float     { animation: float 6s ease-in-out infinite; }
+
+/* ── Staggered entrance ── */
 .stagger > * {
-  animation: fadeInUp 0.4s ease both;
+  animation: fadeInUp 0.45s var(--ease-out) both;
 }
-.stagger > *:nth-child(1) { animation-delay: 0.05s; }
-.stagger > *:nth-child(2) { animation-delay: 0.1s; }
-.stagger > *:nth-child(3) { animation-delay: 0.15s; }
-.stagger > *:nth-child(4) { animation-delay: 0.2s; }
-.stagger > *:nth-child(5) { animation-delay: 0.25s; }
-.stagger > *:nth-child(6) { animation-delay: 0.3s; }
-.stagger > *:nth-child(7) { animation-delay: 0.35s; }
-.stagger > *:nth-child(8) { animation-delay: 0.4s; }
+.stagger > *:nth-child(1)  { animation-delay: 0.04s; }
+.stagger > *:nth-child(2)  { animation-delay: 0.09s; }
+.stagger > *:nth-child(3)  { animation-delay: 0.14s; }
+.stagger > *:nth-child(4)  { animation-delay: 0.19s; }
+.stagger > *:nth-child(5)  { animation-delay: 0.24s; }
+.stagger > *:nth-child(6)  { animation-delay: 0.29s; }
+.stagger > *:nth-child(7)  { animation-delay: 0.34s; }
+.stagger > *:nth-child(8)  { animation-delay: 0.39s; }
+.stagger > *:nth-child(9)  { animation-delay: 0.44s; }
+.stagger > *:nth-child(10) { animation-delay: 0.49s; }
 
-/* Card hover lift */
+/* ── Hover lift ── */
 .hover-lift {
   transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
-
 .hover-lift:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
 }
 
-/* Glassmorphism */
+/* ── Glassmorphism helper ── */
 .glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
 }
